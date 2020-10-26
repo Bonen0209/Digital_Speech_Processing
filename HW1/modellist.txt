@@ -1,0 +1,5 @@
+../Checkpoint/hw1/model_01.txt
+../Checkpoint/hw1/model_02.txt
+../Checkpoint/hw1/model_03.txt
+../Checkpoint/hw1/model_04.txt
+../Checkpoint/hw1/model_05.txt

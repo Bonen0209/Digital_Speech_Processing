@@ -1,0 +1,4 @@
+[submodule "Latex_Template"]
+	path = Latex_Template
+	url = git@github.com:Bonen0209/Template.git
+	branch = latex

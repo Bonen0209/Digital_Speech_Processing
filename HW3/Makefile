@@ -10,13 +10,10 @@ CXX = g++
 CXXFLAGS = -O2 -I$(SRIPATH)/include -I$(INC_PATH)
 
 TARGET = mydisambig
-SRC = mydisambig.cpp
+SRC = $(TARGET:=.cpp)
 OBJ = $(SRC:.cpp=.o)
 FROM ?= Big5-ZhuYin.map
 TO ?= ZhuYin-Big5.map
-#DATA ?= corpus.txt
-#DATA_SEP ?= corpus_sep.txt
-#DATA_COUNT ?= corpus_count.txt
 .PHONY: all clean map
 
 $(TARGET): $(OBJ) -loolm -ldstruct -lmisc
@@ -25,15 +22,10 @@ $(TARGET): $(OBJ) -loolm -ldstruct -lmisc
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $<
 
-all: $(TARGET)
+all: $(TARGET) map
 
 map:
 	@python3 src/mapping.py $(FROM) $(TO)
-
-#preprocess:
-#	@source setup.sh
-#	@perl separator_big5.pl $(DATA) > $(DATA_SEP)
-#	@ngram-count ‒text $(DATA_SEP) ‒write $(DATA_COUNT) ‒order $3
 
 clean:
 	$(RM) $(OBJ) $(TARGET)

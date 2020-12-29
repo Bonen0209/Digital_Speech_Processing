@@ -1,0 +1,63 @@
+\documentclass{article}
+
+% If you're new to LaTeX, here's some short tutorials:
+% https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+% https://en.wikibooks.org/wiki/LaTeX/Basics
+
+% Formatting
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[titletoc,title]{appendix}
+
+% Math
+% https://www.overleaf.com/learn/latex/Mathematical_expressions
+% https://en.wikibooks.org/wiki/LaTeX/Mathematics
+\usepackage{amsmath,amsfonts,amssymb,mathtools}
+
+% Images
+% https://www.overleaf.com/learn/latex/Inserting_Images
+% https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
+\usepackage{graphicx,float}
+
+% Title content
+\title{DSP 2020 Homework 3}
+\author{Wu, Bo-Run r08942073}
+\date{December 22, 2020}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+  I break the viterbi algorithm for bi-gram into two parts, Forward and Backward
+  parts. Besides, the mapping algorithm is listed in the third part.
+\end{center}
+
+% Viterbi forward
+\section{Forward}
+I write forward algorithm according to equation of the derivation from the Q\&A.
+In order to calculate and record the graph of the results, I use two vector
+score and path to record the details of the dynamic programming. While
+calculating the score of the viterbi algorithm, I also record the path for
+backward to trace the route and get the correct sequence that have the maximum
+probability..
+
+The issue that I ran into is the encoding problem. I accidentally open the file
+with UTF-8 encoding and the mandarin character size of the UTF-8 is 3, instead
+of 2, letting me stuck in this bug for at least 4 hours until I see the follow
+up Q\&A to check the file type. Furthermore, It's also hard to design the way to
+load the mapping files to transform different Zhuyin into different BIG5
+character the correct character However, this time I learn the lesson from HW1
+that I have to initialize the parameters every time calculating for dynamic
+programming. 
+
+% Viterbi backward
+\section{Backward}
+After calculating the forward part of the viterbi algorithm, I write a backward
+algorithm to trace the route from the vector path to get the correct sequence. 
+
+\section{Mapping}
+I write the source code of mapping Zhuyin to BIG5 with python, using dictionary
+and set data-structures to convert the mapping back.
+
+\end{document}

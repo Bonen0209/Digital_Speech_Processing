@@ -1,0 +1,70 @@
+\documentclass{article}
+
+% If you're new to LaTeX, here's some short tutorials:
+% https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+% https://en.wikibooks.org/wiki/LaTeX/Basics
+
+% Formatting
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[titletoc,title]{appendix}
+
+% Math
+% https://www.overleaf.com/learn/latex/Mathematical_expressions
+% https://en.wikibooks.org/wiki/LaTeX/Mathematics
+\usepackage{amsmath,amsfonts,amssymb,mathtools}
+
+% Images
+% https://www.overleaf.com/learn/latex/Inserting_Images
+% https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
+\usepackage{graphicx,float}
+
+% Tables
+% https://www.overleaf.com/learn/latex/Tables
+% https://en.wikibooks.org/wiki/LaTeX/Tables
+
+% Algorithms
+% https://www.overleaf.com/learn/latex/algorithms
+% https://en.wikibooks.org/wiki/LaTeX/Algorithms
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{algorithmic}
+
+% Code syntax highlighting
+% https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
+\usepackage{minted}
+\usemintedstyle{borland}
+
+% References
+% https://www.overleaf.com/learn/latex/Bibliography_management_in_LaTeX
+% https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
+\usepackage{biblatex}
+\addbibresource{references.bib}
+
+% Title content
+\title{DSP 2020 Homework 1}
+\author{Wu, Bo-Run r08942073}
+\date{November 6, 2020}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+    I mainly break this homework into two c files, train.c and test.c respectively.
+\end{center}
+
+% Training HMM
+\section{Training HMM}
+
+In train.c, I break the training procedure of Baum-Welch algorithm into several functions to calculate $\alpha$, $\beta$, $\gamma$, and $\epsilon$ separately.
+
+First, I write forward and backward algorithms according to the equation listed in page 9 and page 10 of the homework assignment. The problem that I encounter is the logical error of my dynamic programming for each state. I forgot to add the initialization for the start of each state, causing the parameters to be accumulated during update. When the first time I go back and check the code in train.c is the testing results of the testing sequences. The results come out that all the testing results are all model\_01.txt. Then, I open the debugger to check for the each step to calculate the parameters, and it turns out that the $\alpha$ and $\beta$ are too big while the state get higher and higher.
+
+After calculating $\alpha$ and $\beta$, I calculate the $\gamma$ value also according to the equation listed in page 11 of the homework assignment by $\alpha$ and $\beta$ matrices calculated from above. At the meantime, I also record the $\gamma$ value with different observations, and this matrix help us to update HMM model at the last state. Last, I calculate the $\epsilon$ value also according to the equation listed in page 12 of the homework assignment by the given $\alpha$ and $\beta$ matrices. Also, as in the $\gamma$, I also record the $\epsilon$ value with different states.
+
+% Testing HMM  
+\section{Testing HMM}
+
+In test.c, I write the Viterbi algorithm as a function according to the equation listed in page 17 of the homework assignment. The problem that I encounter here is the index for $\delta$ value in the for loop, because there is too many nested for loop while calculating the $\delta$ value. I encounter many times with indexing out of matrix, causing the compile error while compiling.
+
+\end{document}

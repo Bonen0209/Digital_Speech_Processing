@@ -1,0 +1,66 @@
+\documentclass{article}
+
+% If you're new to LaTeX, here's some short tutorials:
+% https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+% https://en.wikibooks.org/wiki/LaTeX/Basics
+
+% Formatting
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[titletoc,title]{appendix}
+
+% Math
+% https://www.overleaf.com/learn/latex/Mathematical_expressions
+% https://en.wikibooks.org/wiki/LaTeX/Mathematics
+\usepackage{amsmath,amsfonts,amssymb,mathtools}
+
+% Images
+% https://www.overleaf.com/learn/latex/Inserting_Images
+% https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
+\usepackage{graphicx,float}
+
+% Tables
+% https://www.overleaf.com/learn/latex/Tables
+% https://en.wikibooks.org/wiki/LaTeX/Tables
+
+% Algorithms
+% https://www.overleaf.com/learn/latex/algorithms
+% https://en.wikibooks.org/wiki/LaTeX/Algorithms
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{algorithmic}
+
+% Code syntax highlighting
+% https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
+\usepackage{minted}
+\usemintedstyle{borland}
+
+% References
+% https://www.overleaf.com/learn/latex/Bibliography_management_in_LaTeX
+% https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
+\usepackage{biblatex}
+\addbibresource{references.bib}
+
+% Title content
+\title{DSP 2020 Homework 2}
+\author{Wu, Bo-Run r08942073}
+\date{November 20, 2020}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+    I modify the 3-train.sh and 4-test.sh to reach the strong baseline. The following part is divided into two part according to these files.
+\end{center}
+
+% Training HMM
+\section{3-train.sh}
+
+I tried to modify the iteration number and see the performance of the HMM model. However, the higher iteration doesn't seem to improve the performance of the HMM model, so I fix the iteration number to 20. Then for the number of Gaussians, I start with 250 Gaussions and increase 250 Gaussions at every iteration until the end, a.g., 5000 Gaussions. Furthermore, I let the HMM model to re-align before 10 iteration.
+
+% Testing HMM  
+\section{4-test.sh}
+
+The beam size in test is modified to 50, searching the best utterances to match the final answer. Also, the acoustic weight is set to 0.25 to reach the best results.
+
+\end{document}

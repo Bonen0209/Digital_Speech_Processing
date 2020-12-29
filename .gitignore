@@ -1,5 +1,18 @@
+# Data
 Data
+
+# Checkpoint
 Checkpoint
 
+# Latex
+*.aux
+*.bcf
+*.log
+*.run.xml
+
+# Submit
+*r08942073*
+
+# HW1 execute files
 HW1/train
 HW1/test
